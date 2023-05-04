@@ -1,24 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import { Suspense, lazy } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+
+// COmponents
+import Navbar from "./Components/Navbar";
+import Toppanel from "./Components/Toppanel";
+
+// Pages
+const Index = lazy(() => import("./Pages/Index"));
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Toppanel />
+      <Navbar />
+      <Routes>
+        <Route
+          exact
+          path="/"
+          element={
+            <Suspense fallback={<div>Loading...</div>}>
+              <Index />
+            </Suspense>
+          }
+        />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

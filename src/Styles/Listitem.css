@@ -1,0 +1,17 @@
+.listitem {
+  text-transform: capitalize;
+  color: var(--secondary);
+  transition: all 0.3s ease;
+  font-size: 14px;
+}
+
+.listitem:hover {
+  color: var(--accent);
+}
+
+.listitem.selected {
+  color: var(--primary);
+  background-color: var(--accent);
+  padding: 6px 12px;
+  border-radius: 13px;
+}
